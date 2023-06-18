@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addContact } from '../store';
+import { createContact } from '../store';
 
 function ContactForm() {
   const [name, setName] = useState('');
@@ -15,7 +15,7 @@ function ContactForm() {
       name,
       number,
     };
-    dispatch(addContact(contact));
+    dispatch(createContact(contact));
     setName('');
     setNumber('');
   };
