@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../store';
+import { deleteContact, fetchContacts } from '../../redux/fetch';
 
 function ContactList() {
-  const contacts = useSelector(state => state.contacts.contacts);
+  let contacts = useSelector(state => state.contacts.contacts);
   const filter = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
-
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
+
+  useEffect(() => {
+    async function get() {
+      const res = dispatch(fetchContacts());
+      return res;
+    }
+    get();
+  }, [dispatch]);
 
   const handleDeleteContact = id => {
     dispatch(deleteContact(id));
