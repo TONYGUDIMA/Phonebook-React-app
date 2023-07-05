@@ -19,17 +19,6 @@ const contactsSlice = createSlice({
       );
       state.contacts.splice(index, 1);
     },
-    // [refreshUser.pending](state) {
-    //   state.isRefreshing = true;
-    // },
-    // [refreshUser.fulfilled](state, action) {
-    //   state.user = action.payload;
-    //   state.isLoggedIn = true;
-    //   state.isRefreshing = false;
-    // },
-    // [refreshUser.rejected](state) {
-    //   state.isRefreshing = false;
-    // },
   },
 });
 
