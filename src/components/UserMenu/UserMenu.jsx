@@ -8,8 +8,8 @@ function UserMenu({ userName }) {
   const navigation = useNavigate();
   const dispatch = useDispatch();
   const handleClick = () => {
-    navigation('/signUp');
     dispatch(logOut(jwToken));
+    navigation('/');
   };
   return (
     <div className={css.userBox}>

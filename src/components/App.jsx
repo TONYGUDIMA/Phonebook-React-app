@@ -18,7 +18,6 @@ export const App = () => {
       if (userToken) {
         dispatch(refreshUser(userToken));
         dispatch(fetchContacts());
-        nav('/phonebook');
       }
     };
     getUser();
@@ -27,10 +26,10 @@ export const App = () => {
     <>
       <AppBar />
       <Routes>
-        <Route path="/home" element={<Home />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<LogIn />}></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
-        {userToken && <Route path="/phonebook" element={<PhoneBook />}></Route>}
+        <Route path="/phonebook" element={<PhoneBook />}></Route>
       </Routes>
     </>
   );

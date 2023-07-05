@@ -5,7 +5,7 @@ import css from './Pages.module.css';
 import { useNavigate } from 'react-router-dom';
 
 function LogIn() {
-  const nav = useNavigate()
+  const nav = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,7 +24,7 @@ function LogIn() {
     dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
-    nav('/phonebook')
+    nav('/phonebook');
   };
   return (
     <div className={css.container}>

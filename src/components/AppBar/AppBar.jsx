@@ -11,11 +11,10 @@ function AppBar() {
   return (
     <header className={css.header}>
       <nav className={css.nav}>
-        {!userToken && (
-          <NavLink to="/home">
-            <button>Home</button>
-          </NavLink>
-        )}
+        <NavLink to="/">
+          <button>Home</button>
+        </NavLink>
+
         {userToken && (
           <NavLink to="/phonebook">
             <button>PhoneBook</button>
