@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+.label {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.submitBtn {
+  width: 90px;
+  margin: 0 auto;
+}
+.container {
+  padding: 20px;
+}

@@ -1,39 +1,22 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
-import { fetchContacts, createContact, deleteContact } from './fetch';
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { contactsReducer } from './contactsApi/slice';
+import { authReducer } from './auth/slice';
 
-const contactsSlice = createSlice({
-  name: 'contacts',
-  initialState: {
-    contacts: [],
-    filter: '',
-  },
-  reducers: {
-    setFilter: (state, action) => {
-      state.filter = action.payload;
-    },
-  },
-  extraReducers: builder => {
-    builder
-      .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.contacts = action.payload;
-      })
-      .addCase(createContact.fulfilled, (state, action) => {
-        state.contacts.push(action.payload);
-      })
-      .addCase(deleteContact.fulfilled, (state, action) => {
-        state.contacts = state.contacts.filter(
-          contact => contact.id !== action.payload
-        );
-      });
-  },
-});
 
-export const { setFilter } = contactsSlice.actions;
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    contacts: contactsSlice.reducer,
+    auth: persistReducer(authPersistConfig, authReducer),
+    contacts: contactsReducer,
   },
+  devTools: process.env.NODE_ENV === 'development',
 });
 
-export default store;
+export const persistor = persistStore(store);

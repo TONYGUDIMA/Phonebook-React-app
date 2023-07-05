@@ -1,0 +1,29 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px black;
+  padding: 10px;
+  background-color: burlywood;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  outline: none;
+  border: 0.5px solid black;
+  padding: 5px;
+}
+button:hover {
+  background-color: cadetblue;
+  border-radius: 4px;
+}

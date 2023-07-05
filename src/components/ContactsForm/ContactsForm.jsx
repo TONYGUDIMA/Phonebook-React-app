@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { createContact } from '../../redux/fetch';
-
+import { createContact } from '../../redux/contactsApi/operations';
+import css from './ContactForm.module.css';
 function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -21,7 +21,7 @@ function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={css.form}>
       <input
         type="text"
         placeholder="Name"
