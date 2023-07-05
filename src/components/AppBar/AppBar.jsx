@@ -11,9 +11,9 @@ function AppBar() {
   return (
     <header className={css.header}>
       <nav className={css.nav}>
-        <button>
-          <NavLink to="/phonebook">PhoneBook</NavLink>
-        </button>
+        <NavLink to="/phonebook">
+          <button>PhoneBook</button>
+        </NavLink>
       </nav>
       {!userName && <AuthNav />}
       {userName && <UserMenu userName={userName} />}

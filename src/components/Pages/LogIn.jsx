@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import css from './Pages.module.css';
+import { useNavigate } from 'react-router-dom';
 
 function LogIn() {
+  const nav = useNavigate()
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,6 +24,7 @@ function LogIn() {
     dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
+    nav('/phonebook')
   };
   return (
     <div className={css.container}>
