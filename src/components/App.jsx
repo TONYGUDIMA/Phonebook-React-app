@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contactsApi/operations';
+import Home from './Pages/Home';
 export const App = () => {
   const userToken = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ export const App = () => {
     <>
       <AppBar />
       <Routes>
+        <Route path="/home" element={<Home />}></Route>
         <Route path="/login" element={<LogIn />}></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
         {userToken && <Route path="/phonebook" element={<PhoneBook />}></Route>}
