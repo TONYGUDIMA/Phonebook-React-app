@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { createContact } from '../../redux/contactsApi/operations';
 import css from './ContactForm.module.css';
 function ContactForm() {
+  const contacts = useSelector(state => state.contacts.contacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-
+  const isNameExist = name => {
+    for (let i = 0; i < contacts.length; i++) {
+      if (contacts[i].name.toLowerCase() === name.toLowerCase()) {
+        return true;
+      }
+    }
+    return false;
+  };
   const handleSubmit = e => {
     e.preventDefault();
     const contact = {
@@ -15,9 +23,15 @@ function ContactForm() {
       name,
       number,
     };
-    dispatch(createContact(contact));
-    setName('');
-    setNumber('');
+    if (isNameExist(contact.name)) {
+      alert('name is taken');
+      setName('');
+      setNumber('');
+    } else {
+      dispatch(createContact(contact));
+      setName('');
+      setNumber('');
+    }
   };
 
   return (

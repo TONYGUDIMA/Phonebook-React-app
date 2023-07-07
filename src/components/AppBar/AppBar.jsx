@@ -16,8 +16,8 @@ function AppBar() {
         </NavLink>
 
         {userToken && (
-          <NavLink to="/phonebook">
-            <button>PhoneBook</button>
+          <NavLink to="/contacts">
+            <button>Contacts</button>
           </NavLink>
         )}
       </nav>

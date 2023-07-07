@@ -27,7 +27,7 @@ function SignUp() {
     setEmail('');
     setName('');
     setPassword('');
-    nav('/phonebook');
+    nav('/contacts');
   };
   return (
     <div className={css.container}>

@@ -1,18 +1,18 @@
 import React from 'react';
 import ContactForm from '../ContactsForm/ContactsForm';
 import ContactList from '../ContactsList/ContactsList';
-// import Filter from '../Filter/Filter';
+import Filter from '../Filter/Filter';
 import css from './Pages.module.css';
-function PhoneBook() {
+function Contacts() {
   return (
     <div className={css.container}>
-      <h1>Phonebook</h1>
+      <h1>Contacts</h1>
       <ContactForm />
       <h2>Contacts</h2>
-      {/* <Filter /> */}
+      <Filter />
       <ContactList />
     </div>
   );
 }
 
-export default PhoneBook;
+export default Contacts;

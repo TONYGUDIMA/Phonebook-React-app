@@ -1,7 +1,6 @@
 import React from 'react';
 import AppBar from './AppBar/AppBar';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import PhoneBook from './Pages/PhoneBook';
+import { Route, Routes } from 'react-router-dom';
 import LogIn from './Pages/LogIn';
 import SignUp from './Pages/SignUp';
 import { useEffect } from 'react';
@@ -9,10 +8,10 @@ import { refreshUser } from 'redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contactsApi/operations';
 import Home from './Pages/Home';
+import Contacts from './Pages/Contacts';
 export const App = () => {
   const userToken = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
-  const nav = useNavigate();
   useEffect(() => {
     const getUser = async () => {
       if (userToken) {
@@ -21,15 +20,15 @@ export const App = () => {
       }
     };
     getUser();
-  }, [dispatch, nav, userToken]);
+  }, [dispatch, userToken]);
   return (
     <>
       <AppBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<LogIn />}></Route>
-        <Route path="/signUp" element={<SignUp />}></Route>
-        <Route path="/phonebook" element={<PhoneBook />}></Route>
+        {!userToken && <Route path="/login" element={<LogIn />}></Route>}
+        {!userToken && <Route path="/signUp" element={<SignUp />}></Route>}
+        <Route path="/contacts" element={<Contacts />}></Route>
       </Routes>
     </>
   );

@@ -9,10 +9,10 @@ function ContactList() {
   const userToken = useSelector(state => state.auth.token);
   const contacts = useSelector(state => state.contacts.contacts);
   const dispatch = useDispatch();
-  // const filter = useSelector(state => state.contacts.filter);
-  // const filteredContacts = contacts?.filter(contact =>
-  //   contact?.name?.toLowerCase().includes(filter.toLowerCase())
-  // );
+  const filter = useSelector(state => state.contacts.filter);
+  const filteredContacts = contacts?.filter(contact =>
+    contact?.name?.toLowerCase().includes(filter.toLowerCase())
+  );
 
   useEffect(() => {
     if (userToken) {
@@ -27,7 +27,7 @@ function ContactList() {
   return (
     <ul className={css.contactsList}>
       {contacts.length > 0 &&
-        contacts.map(contact => {
+        filteredContacts.map(contact => {
           return (
             <li key={contact.id} className={css.listItem}>
               <p>

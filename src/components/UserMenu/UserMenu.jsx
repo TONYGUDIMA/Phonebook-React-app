@@ -9,7 +9,7 @@ function UserMenu({ userName }) {
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(logOut(jwToken));
-    navigation('/');
+    navigation('/login');
   };
   return (
     <div className={css.userBox}>

@@ -24,7 +24,7 @@ function LogIn() {
     dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
-    nav('/phonebook');
+    nav('/contacts');
   };
   return (
     <div className={css.container}>
